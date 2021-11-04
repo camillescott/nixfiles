@@ -120,7 +120,8 @@ in {
       };
     };
   };
-  #home.file.".vimrc".source = ./vimrc;
+  
+  home.file.".condarc".source = ./conda/condarc;
 
   programs.htop = {
     enable = true;

@@ -1,0 +1,6 @@
+changeps1: false
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+auto_activate_base: true
