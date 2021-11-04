@@ -1,6 +1,18 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+let
+  # installs a vim plugin from git with a given tag / branch
+  pluginGit = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "${lib.strings.sanitizeDerivationName repo}";
+    version = ref;
+    src = builtins.fetchGit {
+      url = "https://github.com/${repo}.git";
+      ref = ref;
+    };
+  };
 
-{
+  # always installs latest version
+  plugin = pluginGit "HEAD";
+in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -10,17 +22,120 @@
   home.homeDirectory = "/home/camille";
 
   home.packages = with pkgs; [
+    bfg-repo-cleaner
     figlet
+    gephi
+    igv
   ];
 
-  programs.vim.enable = true;
-  home.file.".vimrc".source = ./vimrc;
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
 
-  programs.htop.enable = true;
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-nightly;
+    vimAlias = true;
+    withNodeJs = true;
+    withPython3 = true;
+    extraConfig = builtins.concatStringsSep "\n" [
+      (lib.strings.fileContents ./vim/base.vim)
+    ];
+    extraPackages = [
+      pkgs.ccls
+    ];
+    plugins = with pkgs.vimPlugins; [
+      coc-nvim
+      coc-highlight
+      (plugin "godlygeek/tabular")
+
+      # fuzzy finding, browsing
+      (plugin "vijaymarupudi/nvim-fzf")
+      (plugin "kien/ctrlp.vim")
+      (plugin "scrooloose/nerdtree")
+
+      # git
+      (plugin "tpope/vim-fugitive")
+
+      # color highlight movement
+      (plugin "easymotion/vim-easymotion")
+
+      # color related
+      (plugin "vim-scripts/CycleColor")
+      (plugin "flazz/vim-colorschemes")
+      (plugin "vim-scripts/PapayaWhip")
+      (plugin "zanglg/nova.vim")
+      (plugin "junegunn/goyo.vim")
+      (plugin "jnurmine/Zenburn")
+      (plugin "franbach/miramare")
+
+      # documentation plugins
+      (plugin "vim-scripts/DoxygenToolkit.vim")
+      (plugin "alpertuna/vim-header")
+      (plugin "luochen1990/rainbow")
+
+      # highlighting support
+      (plugin "sheerun/vim-polyglot")
+      (plugin "coyotebush/vim-pweave")
+      (plugin "ivan-krukov/vim-snakemake")
+      (plugin "tshirtman/vim-cython")
+      (plugin "plasticboy/vim-markdown")
+      (plugin "lepture/vim-jinja")
+    ];
+    coc = {
+      enable = true;
+      settings = {
+        languageserver = {
+          ccls = {
+            command = "ccls";
+            filetypes = ["c" "cc" "cpp" "c++" "objc" "objcpp"];
+            rootPatterns = [
+              ".ccls"
+              "compile_commands.json"
+              ".git/"
+              ".hg/"
+            ];
+            initializationOptions = {
+              cache = {
+                directory = "/tmp/ccls";
+              };
+            };
+          };
+        };
+        "jedi.enable" = true;
+        "jedi.startupMessage" = false;
+        "jedi.markupKindPreferred" = "plaintext";
+        "jedi.trace.server" = "off";
+        "jedi.jediSettings.autoImportModules" = [];
+        #"jedi.executable.command" = "/home/camille/miniconda/bin/jedi-language-server";
+        "jedi.executable.args" = [];
+        "jedi.completion.disableSnippets" = false;
+        "jedi.completion.resolveEagerly" = false;
+        "jedi.diagnostics.enable" = true;
+        "jedi.diagnostics.didOpen" = true;
+        "jedi.diagnostics.didChange" = true;
+        "jedi.diagnostics.didSave" = true;
+      };
+    };
+  };
+  #home.file.".vimrc".source = ./vimrc;
+
+  programs.htop = {
+    enable = true;
+    settings = {
+      tree_view = true;
+      show_cpu_frequency = true;
+      show_cpu_usage = true;
+      show_program_path = false;
+    };
+  };
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autocd = false;
+    enableAutosuggestions = false;
     history.expireDuplicatesFirst = true;
     history.extended = true;
     history.save = 10000000;
@@ -99,6 +214,56 @@
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.kitty = {
+    enable = true;
+    settings = {
+      scrollback_lines           = 10000;
+      enable_audio_bell          = false;
+      tab_bar_style              = "separator";
+
+      font_family                = "Operator Mono Lig Book";
+      bold_font                  = "Operator Mono Lig Book";
+      italic_font                = "Operator Mono Lig Book Italic";
+      bold_italic_font           = "Operator Mono Lig Book Italic";
+      font_size                  = 13;
+
+      background                 = "#000000";
+      foreground                 = "#c5d4d6";
+      cursor                     = "#9d9eca";
+      selection_background       = "#454d95";
+      # black
+      color0                     = "#333333";
+      color8                     = "#8e8e8e";
+      # red
+      color1                     = "#d46b5d";
+      color9                     = "#ffc4bd";
+      # green
+      color2                     = "#316b50";
+      color10                    = "#d6fcb9";
+      #yellow
+      color3                     = "#b3b163";
+      color11                    = "#fefdd5";
+      # blue
+      color4                     = "#347785";
+      color12                    = "#477ab3";
+      # magenta
+      color5                     = "#5e468c";
+      color13                    = "#ffb1fe";
+      # cyan
+      color6                     = "#d0d1fe";
+      color14                    = "#e5e6fe";
+      # white
+      color7                     = "#f1f1f1";
+      color15                    = "#feffff";
+      selection_foreground       = "#101010";
+
+      background_opacity         = "0.97";
+      dynamic_background_opacity = true;
+      dim_opacity                = "0.9";
+      allow_remote_control       = true;
+    };
   };
 
   # This value determines the Home Manager release that your
