@@ -12,6 +12,9 @@ let
 
   # always installs latest version
   plugin = pluginGit "HEAD";
+
+  # nixGL channel
+  pkgsNixGL = import <nixgl> {};
 in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -26,6 +29,7 @@ in {
     figlet
     gephi
     igv
+    pkgsNixGL.auto.nixGLDefault
   ];
 
   nixpkgs.overlays = [

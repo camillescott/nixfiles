@@ -3,9 +3,13 @@
 Configuration for using the Nix home-manager utility to manage user programs and configuration
 files.
 
-Assuming Nix is installed, install `home-manager`:
+Assuming Nix is installed, add necessary channels and install `home-manager`. We also add the
+`nixGL` channel here, which allows for properly functioning openGL applications when the graphical
+session is not being managed by nix (see the relevant
+[issue](https://github.com/nix-community/home-manager/issues/2251)).
 
     nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+    nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl
     nix-channel --update
     nix-shell '<home-manager>' -A install
 
