@@ -27,7 +27,7 @@ in {
     figlet
     gephi
     igv
-    pkgsNixGL.auto.nixGLDefault
+    pkgsNixGL.nixGLIntel
   ];
 
   nixpkgs.overlays = [
