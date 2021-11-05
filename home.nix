@@ -127,19 +127,9 @@ in {
             };
           };
         };
-       # "jedi.enable" = true;
-       # "jedi.startupMessage" = false;
-       # "jedi.markupKindPreferred" = "plaintext";
-       # "jedi.trace.server" = "off";
-       # "jedi.jediSettings.autoImportModules" = [];
-       # "jedi.executable.command" = "/home/camille/miniconda/bin/jedi-language-server";
-       # "jedi.executable.args" = [];
-       # "jedi.completion.disableSnippets" = false;
-       # "jedi.completion.resolveEagerly" = false;
-       # "jedi.diagnostics.enable" = true;
-       # "jedi.diagnostics.didOpen" = true;
-       # "jedi.diagnostics.didChange" = true;
-       # "jedi.diagnostics.didSave" = true;
+        "python.analysis.diagnosticSeverityOverrides" = {
+          reportOptionalMemberAccess = "warning";
+        };
       };
     };
   };
