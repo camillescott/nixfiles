@@ -1,14 +1,14 @@
 { config, pkgs, lib, ... }:
 let
-  # installs a vim plugin from git with a given tag / branch
-  plugin = {ref ? "HEAD", repo, postInstall ? ""}: pkgs.vimUtils.buildVimPluginFrom2Nix {
+  # convenenience: installs a vim plugin from git with a given tag / branch
+  plugin = {ref ? "HEAD", repo, postFixup ? ""}: pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "${lib.strings.sanitizeDerivationName repo}";
-    version = ref;
+    version = baseNameOf ref;
     src = builtins.fetchGit {
       url = "https://github.com/${repo}.git";
       ref = ref;
     };
-    postInstall = postInstall;
+    postFixup = postFixup;
   };
 
   # nixGL channel
@@ -92,10 +92,23 @@ in {
       (plugin {repo = "franbach/miramare";})
 
       # documentation plugins
-      #(plugin {repo = "vim-scripts/DoxygenToolkit.vim"})
-      (plugin {repo = "kkoomen/vim-doge";})
-      # TODO: figure out how to automate / package the postinstall call here
-      #         postInstall = "nvim +\"call doge#install({headless: 1})\" +qall";})
+      (let
+        doge-ref = "v3.11.0";
+        doge-release = fetchTarball {
+          url = "https://github.com/kkoomen/vim-doge/releases/download/${doge-ref}/vim-doge-linux.tar.gz";
+          sha256 = "1ib2fq5aix9z736j8nqzjamcmbv2lsnirwipdlddaypw794lkc94";
+        };
+       in
+       plugin {ref = "refs/tags/${doge-ref}";
+               repo = "kkoomen/vim-doge";
+               # fetchTarBall removes the top-level directory from the archive, but
+               # the doge releases don't have one -- so, the binary itself ends up being
+               # saved to a file at doge-release. So, we copy that file directly.
+               postFixup = ''
+                 mkdir -p $out/bin
+                 cp ${doge-release} $out/bin/vim-doge
+               '';}
+      )
       (plugin {repo = "alpertuna/vim-header";})
       (plugin {repo = "luochen1990/rainbow";})
 
