@@ -1,17 +1,15 @@
 { config, pkgs, lib, ... }:
 let
   # installs a vim plugin from git with a given tag / branch
-  pluginGit = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
+  plugin = {ref ? "HEAD", repo, postInstall ? ""}: pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "${lib.strings.sanitizeDerivationName repo}";
     version = ref;
     src = builtins.fetchGit {
       url = "https://github.com/${repo}.git";
       ref = ref;
     };
+    postInstall = postInstall;
   };
-
-  # always installs latest version
-  plugin = pluginGit "HEAD";
 
   # nixGL channel
   pkgsNixGL = import <nixgl> {};
@@ -46,47 +44,61 @@ in {
     withPython3 = true;
     extraConfig = builtins.concatStringsSep "\n" [
       (lib.strings.fileContents ./vim/base.vim)
+      (lib.strings.fileContents ./vim/coc.vim)
+      (lib.strings.fileContents ./vim/colors.vim)
     ];
     extraPackages = [
       pkgs.ccls
     ];
     plugins = with pkgs.vimPlugins; [
-      coc-nvim
+      { 
+        plugin = coc-nvim;
+        config = "let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-pyright', 'coc-yaml', 'coc-cmake']";
+      }
+      #coc-cmake
+      coc-fzf
       coc-highlight
-      (plugin "godlygeek/tabular")
+      #coc-json
+      #coc-pyright
+      #coc-yaml
+
+      (plugin {repo = "godlygeek/tabular";})
 
       # fuzzy finding, browsing
-      (plugin "vijaymarupudi/nvim-fzf")
-      (plugin "kien/ctrlp.vim")
-      (plugin "scrooloose/nerdtree")
+      (plugin {repo = "vijaymarupudi/nvim-fzf";})
+      (plugin {repo = "kien/ctrlp.vim";})
+      (plugin {repo = "scrooloose/nerdtree";})
 
       # git
-      (plugin "tpope/vim-fugitive")
+      (plugin {repo = "tpope/vim-fugitive";})
 
-      # color highlight movement
-      (plugin "easymotion/vim-easymotion")
+      # color {repo = highlight movement
+      (plugin {repo = "easymotion/vim-easymotion";})
 
-      # color related
-      (plugin "vim-scripts/CycleColor")
-      (plugin "flazz/vim-colorschemes")
-      (plugin "vim-scripts/PapayaWhip")
-      (plugin "zanglg/nova.vim")
-      (plugin "junegunn/goyo.vim")
-      (plugin "jnurmine/Zenburn")
-      (plugin "franbach/miramare")
+      # color {repo = related
+      (plugin {repo = "vim-scripts/CycleColor";})
+      (plugin {repo = "flazz/vim-colorschemes";})
+      (plugin {repo = "vim-scripts/PapayaWhip";})
+      (plugin {repo = "zanglg/nova.vim";})
+      (plugin {repo = "junegunn/goyo.vim";})
+      (plugin {repo = "jnurmine/Zenburn";})
+      (plugin {repo = "franbach/miramare";})
 
       # documentation plugins
-      (plugin "vim-scripts/DoxygenToolkit.vim")
-      (plugin "alpertuna/vim-header")
-      (plugin "luochen1990/rainbow")
+      #(plugin {repo = "vim-scripts/DoxygenToolkit.vim"})
+      (plugin {repo = "kkoomen/vim-doge";})
+      # TODO: figure out how to automate / package the postinstall call here
+      #         postInstall = "nvim +\"call doge#install({headless: 1})\" +qall";})
+      (plugin {repo = "alpertuna/vim-header";})
+      (plugin {repo = "luochen1990/rainbow";})
 
       # highlighting support
-      (plugin "sheerun/vim-polyglot")
-      (plugin "coyotebush/vim-pweave")
-      (plugin "ivan-krukov/vim-snakemake")
-      (plugin "tshirtman/vim-cython")
-      (plugin "plasticboy/vim-markdown")
-      (plugin "lepture/vim-jinja")
+      (plugin {repo = "sheerun/vim-polyglot";})
+      (plugin {repo = "coyotebush/vim-pweave";})
+      (plugin {repo = "ivan-krukov/vim-snakemake";})
+      (plugin {repo = "tshirtman/vim-cython";})
+      (plugin {repo = "plasticboy/vim-markdown";})
+      (plugin {repo = "lepture/vim-jinja";})
     ];
     coc = {
       enable = true;
@@ -108,19 +120,19 @@ in {
             };
           };
         };
-        "jedi.enable" = true;
-        "jedi.startupMessage" = false;
-        "jedi.markupKindPreferred" = "plaintext";
-        "jedi.trace.server" = "off";
-        "jedi.jediSettings.autoImportModules" = [];
-        #"jedi.executable.command" = "/home/camille/miniconda/bin/jedi-language-server";
-        "jedi.executable.args" = [];
-        "jedi.completion.disableSnippets" = false;
-        "jedi.completion.resolveEagerly" = false;
-        "jedi.diagnostics.enable" = true;
-        "jedi.diagnostics.didOpen" = true;
-        "jedi.diagnostics.didChange" = true;
-        "jedi.diagnostics.didSave" = true;
+       # "jedi.enable" = true;
+       # "jedi.startupMessage" = false;
+       # "jedi.markupKindPreferred" = "plaintext";
+       # "jedi.trace.server" = "off";
+       # "jedi.jediSettings.autoImportModules" = [];
+       # "jedi.executable.command" = "/home/camille/miniconda/bin/jedi-language-server";
+       # "jedi.executable.args" = [];
+       # "jedi.completion.disableSnippets" = false;
+       # "jedi.completion.resolveEagerly" = false;
+       # "jedi.diagnostics.enable" = true;
+       # "jedi.diagnostics.didOpen" = true;
+       # "jedi.diagnostics.didChange" = true;
+       # "jedi.diagnostics.didSave" = true;
       };
     };
   };
