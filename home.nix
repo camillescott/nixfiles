@@ -13,14 +13,17 @@ let
 
   # nixGL channel
   pkgsNixGL = import <nixgl> {};
+
+  username = "camille";
+  homeDirectory = "/home/camille";
 in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "camille";
-  home.homeDirectory = "/home/camille";
+  home.username = username;
+  home.homeDirectory = homeDirectory;
 
   home.packages = with pkgs; [
     bfg-repo-cleaner
@@ -29,6 +32,8 @@ in {
     igv
     pkgsNixGL.nixGLIntel
   ];
+
+
 
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
@@ -281,6 +286,22 @@ in {
       dim_opacity                = "0.9";
       allow_remote_control       = true;
     };
+  };
+
+  # Build a .desktop file for kitty that launches it with nixGL
+  xdg.dataFile."applications/kitty.desktop" = {
+    text = ''
+      [Desktop Entry]
+      Version=1.0
+      Type=Application
+      Name=kitty
+      GenericName=Terminal emulator
+      Comment=A fast, feature full, GPU based terminal emulator
+      TryExec=kitty
+      Exec=nixGLIntel kitty
+      Icon=${homeDirectory}/.nix-profile/share/icons/hicolor/256x256/apps/kitty.png
+      Categories=System;TerminalEmulator;
+    '';
   };
 
   # This value determines the Home Manager release that your
