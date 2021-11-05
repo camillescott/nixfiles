@@ -25,6 +25,7 @@ in {
   home.username = username;
   home.homeDirectory = homeDirectory;
 
+  # General userland packages to manage
   home.packages = with pkgs; [
     bfg-repo-cleaner
     figlet
@@ -32,8 +33,6 @@ in {
     igv
     pkgsNixGL.nixGLIntel
   ];
-
-
 
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
@@ -54,6 +53,7 @@ in {
     ];
     extraPackages = [
       pkgs.ccls
+      pkgs.fzf
     ];
     plugins = with pkgs.vimPlugins; [
       { 
@@ -70,6 +70,8 @@ in {
       (plugin {repo = "godlygeek/tabular";})
 
       # fuzzy finding, browsing
+      (plugin {repo = "junegunn/fzf";})
+      (plugin {repo = "junegunn/fzf.vim";})
       (plugin {repo = "vijaymarupudi/nvim-fzf";})
       (plugin {repo = "kien/ctrlp.vim";})
       (plugin {repo = "scrooloose/nerdtree";})
