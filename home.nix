@@ -142,7 +142,9 @@ in {
         };
         "python.analysis.diagnosticSeverityOverrides" = {
           reportOptionalMemberAccess = "warning";
+          reportUnusedCoroutine = "warning";
         };
+        "jedi.enable" = false;
       };
     };
   };
