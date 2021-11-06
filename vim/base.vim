@@ -70,6 +70,10 @@ let g:header_field_license_id = 'MIT'
 
 let orgfoldexpr=&foldexpr
 
+" vim-doge doc generation
+let g:doge_doc_standard_python = 'google'
+let g:doge_python_settings = {'single_quotes': 1}
+
 " fzf
 nmap ; :Buffers<CR>
 nmap <Leader>t :Files<CR>
