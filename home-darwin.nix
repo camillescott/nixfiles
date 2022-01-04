@@ -18,4 +18,6 @@ in  {
   targets.darwin  = {
     search = "Google";
   };
+
+  programs.vscode.enable = true;
 }
