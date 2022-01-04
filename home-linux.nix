@@ -13,6 +13,8 @@ in {
   home.homeDirectory = homeDirectory;
   home.packages = pkgs.callPackage ./common/packages.nix {} ++ platPkgs;
 
+  imports = [ ./common ];
+
   # Build a .desktop file for kitty that launches it with nixGL
   xdg.dataFile."applications/kitty.desktop" = {
     text = ''
