@@ -24,7 +24,7 @@
       extraConfig = ''
         zstyle :omz:plugins:ssh-agent agent-forwarding on
       '';
-      custom = "$HOME/nixfiles/oh-my-zsh";
+      custom = "$HOME/nixfiles/common/oh-my-zsh";
       theme = "camillescott";
     };
     plugins = [
@@ -53,7 +53,7 @@
 
     };
     initExtraFirst = ''
-      source $HOME/nixfiles/zsh/functions.zsh
+      source $HOME/nixfiles/common/zsh/functions.zsh
     '';
     initExtra = ''
     __conda_setup="$('$HOME/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

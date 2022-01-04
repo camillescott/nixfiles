@@ -1,11 +1,11 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ...}: {
 
   imports = [ ./vim ./zsh ];
 
+  home.file.".condarc".source = ./conda/condarc;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  home.file.".condarc".source = ./conda/condarc;
 
   programs.htop = {
     enable = true;
@@ -90,4 +90,6 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "21.11";
+
+
 }

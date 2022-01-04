@@ -1,22 +1,17 @@
 { config, pkgs, lib, ... }:
 let
-  # nixGL channel
-  pkgsNixGL = import <nixgl> {};
 
   username = "camille";
   homeDirectory = "/home/camille";
+  platPkgs = pkgs.callPackage ./linux/packages.nix {};
+
 in {
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = username;
   home.homeDirectory = homeDirectory;
-
-  home.packages = pkgs.callPackage ./packages.nix {} ++
-    [
-    ];
-
-  imports = [ ./common.nix ];
+  home.packages = pkgs.callPackage ./common/packages.nix {} ++ platPkgs;
 
   # Build a .desktop file for kitty that launches it with nixGL
   xdg.dataFile."applications/kitty.desktop" = {
@@ -32,6 +27,5 @@ in {
       Icon=${homeDirectory}/.nix-profile/share/icons/hicolor/256x256/apps/kitty.png
       Categories=System;TerminalEmulator;
     '';
-  };
-
+  }; 
 }

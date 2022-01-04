@@ -1,3 +1,7 @@
+# utility to copy installed applications to the proper location for spotlight,
+# from: https://github.com/reckenrode/nixos-configs/blob/main/common/darwin/home-manager/default.nix
+# See also: https://github.com/nix-community/home-manager/issues/1341
+
 { pkgs, lib, ... }:
 
 {
