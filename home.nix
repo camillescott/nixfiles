@@ -14,7 +14,6 @@ in {
 
   home.packages = pkgs.callPackage ./packages.nix {} ++
     [
-      pkgsNixGL.nixGLIntel
     ];
 
   imports = [ ./common.nix ];
