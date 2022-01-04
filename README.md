@@ -15,7 +15,7 @@ session is not being managed by nix (see the relevant
 
 Remove the default configuration:
 
-    rm ~/.config/nixpkgs
+    rm -r ~/.config/nixpkgs
 
 Clone this repo:
 
@@ -25,6 +25,11 @@ Link it into the expected location:
 
     cd ~/.config
     ln -s ~/nixfiles nixpkgs
+
+Link the appropriate entrypoint file (`home-linux.nix` or `home-darwin.nix`):
+
+    cd ~/nixfiles
+    ln -s home-linux.nix home.nix
 
 Activate using:
 
