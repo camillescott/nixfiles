@@ -4,10 +4,12 @@
     enable = true;
     autocd = false;
     enableAutosuggestions = false;
-    history.expireDuplicatesFirst = true;
-    history.extended = true;
-    history.save = 10000000;
-    history.size = 10000000;
+    history = {
+      expireDuplicatesFirst = true;
+      extended = true;
+      save = 10000000;
+      size = 10000000;
+    };
     oh-my-zsh = {
       enable = true;
       plugins = [
@@ -24,7 +26,7 @@
       extraConfig = ''
         zstyle :omz:plugins:ssh-agent agent-forwarding on
       '';
-      custom = "$HOME/nixfiles/common/oh-my-zsh";
+      custom = "${config.home.homeDirectory}/nixfiles/common/oh-my-zsh";
       theme = "camillescott";
     };
     plugins = [
@@ -46,24 +48,20 @@
       ZSH_THEME_CONDA_ENV_PROMPT_SUFFIX = "› ";
       ZSH_THEME_PY_PROMPT_PREFIX = "⟮py";
       ZSH_THEME_PY_PROMPT_SUFFIX = "⟯ ";
-
     };
     shellAliases = {
       ".." = "cd ..";
-
     };
-    initExtraFirst = ''
-      source $HOME/nixfiles/common/zsh/functions.zsh
-    '';
+    initExtraFirst = lib.strings.fileContents ./functions.zsh;
     initExtra = ''
-    __conda_setup="$('$HOME/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    __conda_setup="$('${config.home.homeDirectory}/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "$HOME/miniconda/etc/profile.d/conda.sh" ]; then
-            . "$HOME/miniconda/etc/profile.d/conda.sh"
+        if [ -f "${config.home.homeDirectory}/miniconda/etc/profile.d/conda.sh" ]; then
+            . "${config.home.homeDirectory}/miniconda/etc/profile.d/conda.sh"
         else
-            export PATH="$HOME/miniconda/bin:$PATH"
+            export PATH="${config.home.homeDirectory}/miniconda/bin:$PATH"
         fi
     fi
     unset __conda_setup
