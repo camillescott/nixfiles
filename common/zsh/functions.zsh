@@ -1,7 +1,3 @@
-#ZSH_THEME_CONDA_ENV_PROMPT_PREFIX="‹"
-#ZSH_THEME_CONDA_ENV_PROMPT_SUFFIX="› "
-#ZSH_THEME_PY_PROMPT_PREFIX="⟮py"
-#ZSH_THEME_PY_PROMPT_SUFFIX="⟯ "
 HOSTNAME="$(hostname)"  # Conda clobbers HOST, so we save the real hostname into another variable.
 
 precmd() {
@@ -78,9 +74,9 @@ motd_meminfo() {
 
 motd_dfinfo() {
     if [[ `uname -s` == 'Darwin' ]]; then 
-        acenterf "`df -h | grep /dev/disk1s1 | awk '{print $3,"of",$2,"("$5") used on "$9}'`"
+        acenterf "`df -lh | grep /dev/disk1s1 | awk '{print $3,"of",$2,"("$5") used on "$9}'`"
     else
-        acenterf "`df -h | grep "data\|home\|\s\/$" | awk '{print $3 " of "$2 " ("$5") on "$6}'`"
+        acenterf "`df -lh | grep "data\|home\|\s\/$" | awk '{print $3 " of "$2 " ("$5") on "$6}'`"
     fi
 }
 
@@ -100,7 +96,7 @@ motd() {
     echo
     echo
     tput setaf 5
-    #figlet -c -w `tput cols` -f Broadway $HOSTNAME
+    figlet -c -w `tput cols` -f Broadway $HOSTNAME
     tput sgr 0
     echo
     echo
