@@ -1,0 +1,61 @@
+{
+  "editor.fontFamily": "'Dank Mono', 'PT Mono', Menlo, Monaco, 'Courier New',monospace",
+  "editor.fontWeight": "700",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "editor.minimap.enabled": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.suggestSelection": "first",
+
+  "workbench.fontAliasing": "antialiased",
+  "workbench.colorTheme": "Noctis Obscuro",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.wrapTabs": true,
+  "workbench.editor.enablePreview": false,
+
+  "vim.easymotionMarkerFontFamily": "Dank Mono', 'PT Mono',Menlo, Monaco, 'Courier New', monospace",
+  "vim.easymotionMarkerHeight": 18,
+  "vim.easymotionMarkerFontWeight": "bold",
+  "vim.easymotionMarkerBackgroundColor": "#1e1e1e",
+  "vim.easymotionMarkerForegroundColorOneChar": "#c25215",
+  "vim.easymotionMarkerYOffset": 2,
+  "vim.easymotionMarkerForegroundColorTwoChar": "#c21515",
+  "vim.easymotion": true,
+  "vim.leader": ",",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [";"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [
+        ":nohl"
+        ]
+    }
+  ],
+
+  "python.linting.pylintEnabled": false,
+  "python.languageServer": "Pylance",
+  "[python]": {
+    "editor.defaultFormatter": "iansan5653.format-python-docstrings"
+  },
+
+  "autoDocstring.docstringFormat": "google",
+
+  "files.associations": {
+    "*.snakefile": "snakemake",
+    "*.rule": "snakemake"
+  },
+
+  "window.zoomLevel": 0,
+
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  "jupyter.sendSelectionToInteractiveWindow": false,
+
+  "C_Cpp.clang_format_fallbackStyle": "Chromium",
+  "C_Cpp.default.cppStandard": "c++17"
+}
