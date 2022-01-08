@@ -4,6 +4,7 @@ let
   username = "camille";
   homeDirectory = "/home/camille";
   platPkgs = pkgs.callPackage ./linux/packages.nix {};
+  applications = "${homeDirectory}/.nix-profile/share/applications";
 
 in {
 
@@ -14,6 +15,8 @@ in {
   home.packages = pkgs.callPackage ./common/packages.nix {} ++ platPkgs;
 
   imports = [ ./common ];
+
+  programs.bash.enable = true;
 
   # Build a .desktop file for kitty that launches it with nixGL
   xdg.dataFile."applications/kitty.desktop" = {
@@ -30,4 +33,9 @@ in {
       Categories=System;TerminalEmulator;
     '';
   }; 
+
+  xdg.dataFile."applications/vscode.desktop" = {
+    source = "${applications}/code.desktop";
+  };
+
 }
