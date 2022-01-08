@@ -51,7 +51,7 @@
     };
     shellAliases = {
       ".." = "cd ..";
-      "cpufreq" = "watch -n1 "grep \"^[c]pu MHz\" /proc/cpuinfo";
+      "cpufreq" = "watch -n1 \"grep \"^[c]pu MHz\" /proc/cpuinfo\"";
     };
     initExtraFirst = lib.strings.fileContents ./functions.zsh;
     initExtra = ''

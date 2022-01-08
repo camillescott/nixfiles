@@ -14,7 +14,7 @@ in {
   home.homeDirectory = homeDirectory;
   home.packages = pkgs.callPackage ./common/packages.nix {} ++ platPkgs;
 
-  imports = [ ./common ];
+  imports = [ ./common ./common/vscode ];
 
   programs.bash.enable = true;
 

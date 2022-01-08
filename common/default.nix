@@ -1,6 +1,6 @@
 { config, pkgs, lib, ...}: {
 
-  imports = [ ./vim ./zsh ./vscode ];
+  imports = [ ./vim ./zsh ];
 
   home.file.".condarc".source = ./conda/condarc;
 
