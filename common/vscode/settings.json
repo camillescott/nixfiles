@@ -8,12 +8,12 @@
   "editor.suggestSelection": "first",
 
   "workbench.fontAliasing": "antialiased",
-  "workbench.colorTheme": "Noctis Obscuro",
+  "workbench.colorTheme": "Ranier - Shadow",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.editor.wrapTabs": true,
   "workbench.editor.enablePreview": false,
 
-  "vim.easymotionMarkerFontFamily": "Dank Mono', 'PT Mono',Menlo, Monaco, 'Courier New', monospace",
+  "vim.easymotionMarkerFontFamily": "Dank Mono', 'PT Mono', Menlo, Monaco, 'Courier New', monospace",
   "vim.easymotionMarkerHeight": 18,
   "vim.easymotionMarkerFontWeight": "bold",
   "vim.easymotionMarkerBackgroundColor": "#1e1e1e",
