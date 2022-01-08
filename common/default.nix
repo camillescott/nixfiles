@@ -24,6 +24,11 @@
     aliases = {
       graph = "log --oneline --abbrev-commit --all --graph --decorate --color";
     };
+    extraConfig = {
+      pull = {
+        rebase = false;
+      };
+    };
   };
 
   programs.fzf = {
