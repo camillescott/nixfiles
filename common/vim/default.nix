@@ -37,7 +37,7 @@ in {
     plugins = with pkgs.vimPlugins; [
       { 
         plugin = coc-nvim;
-        config = "let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-pyright', 'coc-yaml', 'coc-cmake']";
+        config = "let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-yaml', 'coc-cmake']";
       }
       #coc-cmake
       coc-fzf
@@ -123,7 +123,8 @@ in {
           reportOptionalMemberAccess = "warning";
           reportUnusedCoroutine = "warning";
         };
-        "jedi.enable" = false;
+        "jedi.enable" = true;
+        "jedi.hover.enable" = true;
       };
     };
   };
