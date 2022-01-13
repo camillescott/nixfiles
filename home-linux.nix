@@ -14,7 +14,7 @@ in {
   home.homeDirectory = homeDirectory;
   home.packages = pkgs.callPackage ./common/packages.nix {} ++ platPkgs;
 
-  imports = [ ./common ./common/vscode ];
+  imports = [ ./common ];
 
   programs.bash.enable = true;
 
@@ -33,9 +33,5 @@ in {
       Categories=System;TerminalEmulator;
     '';
   }; 
-
-  xdg.dataFile."applications/vscode.desktop" = {
-    source = "${applications}/code.desktop";
-  };
 
 }

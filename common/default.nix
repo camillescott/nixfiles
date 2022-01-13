@@ -86,6 +86,10 @@
     };
   };
 
+  xdg.configFile."Code/User/settings.json" = {
+    source = ./vscode/settings.json;
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
