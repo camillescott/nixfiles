@@ -19,6 +19,7 @@
 
   programs.git = {
     enable = true;
+    package = pkgs.gitAndTools.gitFull;
     userName = "Camille Scott";
     userEmail = "camille.scott.w@gmail.com";
     aliases = {
