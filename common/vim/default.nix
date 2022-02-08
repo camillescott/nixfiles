@@ -38,6 +38,7 @@ in {
       #coc-json
       #coc-pyright
       #coc-yaml
+      vim-devicons
 
       (plugin {repo = "godlygeek/tabular";})
 
@@ -45,11 +46,15 @@ in {
       (plugin {repo = "junegunn/fzf";})
       (plugin {repo = "junegunn/fzf.vim";})
       (plugin {repo = "vijaymarupudi/nvim-fzf";})
-      (plugin {repo = "kien/ctrlp.vim";})
+      (plugin {repo = "ctrlpvim/ctrlp.vim";})
       (plugin {repo = "scrooloose/nerdtree";})
+      (plugin {repo = "liuchengxu/vista.vim";})
 
       # git
       (plugin {repo = "tpope/vim-fugitive";})
+      (plugin {repo = "airblade/vim-gitgutter";})
+
+      (plugin {repo = "itchyny/lightline.vim";})
 
       # color {repo = highlight movement
       (plugin {repo = "easymotion/vim-easymotion";})
@@ -57,11 +62,13 @@ in {
       # color {repo = related
       (plugin {repo = "vim-scripts/CycleColor";})
       (plugin {repo = "flazz/vim-colorschemes";})
-      (plugin {repo = "vim-scripts/PapayaWhip";})
-      (plugin {repo = "zanglg/nova.vim";})
-      (plugin {repo = "junegunn/goyo.vim";})
+      #(plugin {repo = "vim-scripts/PapayaWhip";})
+      #(plugin {repo = "zanglg/nova.vim";})
+      #(plugin {repo = "junegunn/goyo.vim";})
       (plugin {repo = "jnurmine/Zenburn";})
       (plugin {repo = "franbach/miramare";})
+      (plugin {repo = "b4skyx/serenade";})
+      (plugin {repo = "arcticicestudio/nord-vim";})
 
       # documentation plugins
       (let
@@ -122,4 +129,7 @@ in {
     };
   };
 
+  xdg.configFile."nvim/colors/camillionaire.vim" = {
+    source = ./camillionaire.vim;
+  };
 }
