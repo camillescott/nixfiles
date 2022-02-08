@@ -50,7 +50,8 @@
       bold_italic_font           = "Operator Mono Lig Book Italic";
       font_size                  = 13;
 
-      background                 = "#000000";
+      #background                 = "#0d1117";
+      background                 = "#080808";
       foreground                 = "#c5d4d6";
       cursor                     = "#9d9eca";
       selection_background       = "#454d95";
