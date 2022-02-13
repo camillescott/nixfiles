@@ -40,17 +40,16 @@ function! StatusDiagnostic() abort
   return join(msgs, ' ') . ' ' . get(g:, 'coc_status', '')
 endfunction
 
-"
-" Status Line Stuff
-"
-set statusline=   " clear the statusline for when vimrc is reloaded
-set statusline+=%-3.3n\                      " buffer number
-set statusline+=%f\                          " file name
-set statusline+=%{StatusDiagnostic()}
-set statusline+=[%{strlen(&ft)?&ft:'none'}]  " filetype
-set statusline+=%=                           " right align
-set statusline+=%{fugitive#statusline()}
-set laststatus=2
+let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeDirArrowExpandable="\u00a0"
+let NERDTreeDirArrowCollapsible="\u00a0"
 
 let g:rainbow_active = 1
 
@@ -78,6 +77,10 @@ let g:doge_python_settings = {'single_quotes': 1}
 nmap ; :Buffers<CR>
 nmap <Leader>t :Files<CR>
 nmap <Leader>r :Tags<CR>
+
+let g:vista_default_executive = 'coc'
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
 
 " filetype stuff
 autocmd FileType markdown setlocal spell|setlocal textwidth=100
