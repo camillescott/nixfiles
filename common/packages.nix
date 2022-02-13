@@ -7,4 +7,6 @@ with pkgs; [
   ncdu
   pandoc
   parallel
+  sshuttle
+  mosh
 ]
