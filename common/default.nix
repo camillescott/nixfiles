@@ -10,10 +10,25 @@
   programs.htop = {
     enable = true;
     settings = {
-      tree_view = true;
+      tree_view = false;
       show_cpu_frequency = true;
       show_cpu_usage = true;
       show_program_path = false;
+      highlight_base_name = 1;
+      highlight_megabytes = 1;
+      highlight_threads = 1;
+      fields = with config.lib.htop.fields; [
+        PID
+        USER
+        M_SIZE
+        M_RESIDENT
+        M_SHARE
+        STATE
+        PERCENT_CPU
+        PERCENT_MEM
+        TIME
+        COMM
+      ];
     };
   };
 
