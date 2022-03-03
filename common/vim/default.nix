@@ -69,6 +69,7 @@ in {
       (plugin {repo = "franbach/miramare";})
       (plugin {repo = "b4skyx/serenade";})
       (plugin {repo = "arcticicestudio/nord-vim";})
+      (plugin {repo = "EdenEast/nightfox.nvim";})
 
       # documentation plugins
       (let

@@ -12,11 +12,12 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
-set t_Co=256
-if &term =~ '256color' | set t_ut= | endif " Disable Background Color Erase (tmux)
+"set t_Co=256
+"if &term =~ '256color' | set t_ut= | endif " Disable Background Color Erase (tmux)
+set termguicolors
 
 let g:lightline = {
-      \ 'colorscheme': 'apprentice',
+      \ 'colorscheme': 'nightfox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified', 'method' ] ]
@@ -29,8 +30,19 @@ let g:lightline = {
       \ }
 
 
-let g:camillionaire_transparent_background = 1
-colorscheme camillionaire
+"let g:camillionaire_transparent_background = 1
+"colorscheme camillionaire
+colorscheme nordfox
+
+" nightfox/nordfox is configured in lua...
+lua << EOF
+local nightfox = require('nightfox')
+nightfox.setup({
+  fox = "nordfox",
+  transparent = true,
+})
+nightfox.load()
+EOF
 
 set cursorline
-
+set fillchars+=vert:\║

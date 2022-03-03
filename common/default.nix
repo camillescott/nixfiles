@@ -63,7 +63,14 @@
       bold_font                  = "Operator Mono Lig Book";
       italic_font                = "Operator Mono Lig Book Italic";
       bold_italic_font           = "Operator Mono Lig Book Italic";
-      font_size                  = 13;
+      font_size                  = "14";
+
+      single_window_margin_width = 0;
+      window_margin_width        = 0;
+      window_padding_width       = 0;
+      window_border_width        = 0;
+      hide_window_decorations    = false;
+      placement_strategy         = "top-left";
 
       #background                 = "#0d1117";
       background                 = "#080808";
