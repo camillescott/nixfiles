@@ -46,10 +46,11 @@ let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
-let NERDTreeMinimalUI = 1
+"let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-let NERDTreeDirArrowExpandable="\u00a0"
-let NERDTreeDirArrowCollapsible="\u00a0"
+"let NERDTreeDirArrowExpandable="\u00a0"
+"let NERDTreeDirArrowCollapsible="\u00a0"
+let g:webdevicons_conceal_nerdtree_brackets = 1
 
 let g:rainbow_active = 1
 
