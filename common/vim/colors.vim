@@ -15,6 +15,7 @@ endfunc
 "set t_Co=256
 "if &term =~ '256color' | set t_ut= | endif " Disable Background Color Erase (tmux)
 set termguicolors
+set conceallevel=3
 
 let g:lightline = {
       \ 'colorscheme': 'nightfox',
@@ -38,8 +39,12 @@ colorscheme nordfox
 lua << EOF
 local nightfox = require('nightfox')
 nightfox.setup({
-  fox = "nordfox",
-  transparent = true,
+    fox = "nordfox",
+    transparent = true,
+    styles = {
+        comments = "italic", -- change style of comments to be italic
+        strings = "italic",
+    },
 })
 nightfox.load()
 EOF

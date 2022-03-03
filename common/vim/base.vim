@@ -46,18 +46,28 @@ let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
-"let NERDTreeMinimalUI = 1
+let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 "let NERDTreeDirArrowExpandable="\u00a0"
 "let NERDTreeDirArrowCollapsible="\u00a0"
 let g:webdevicons_conceal_nerdtree_brackets = 1
 
 let g:rainbow_active = 1
+let g:rainbow_conf = {
+  \    'separately': {
+  \       'nerdtree': 0
+  \    }
+  \}
 
 " vim-markdown options
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_math = 1
+
+" vim-polyglot conceal
+let g:vim_json_syntax_conceal = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 
 " vim headers
 let g:header_auto_add_header = 0
