@@ -2,6 +2,7 @@
 
   imports = [ ./vim ./zsh ./kitty ];
 
+  home.packages = pkgs.callPackage ./packages.nix {};
   home.file.".condarc".source = ./conda/condarc;
 
   # Let Home Manager install and manage itself.

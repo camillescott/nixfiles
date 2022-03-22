@@ -11,7 +11,7 @@ in  {
   # paths it should manage.
   home.username = username;
   home.homeDirectory = homeDirectory;
-  home.packages = pkgs.callPackage ./common/packages.nix {} ++ platPkgs;
+  home.packages = platPkgs;
 
   imports = [ ./common ./darwin/copyApplications.nix ];
 

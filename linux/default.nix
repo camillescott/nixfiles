@@ -1,9 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, ...}: 
 let
 
   username = "camille";
   homeDirectory = "/home/camille";
-  platPkgs = pkgs.callPackage ./linux/packages.nix {};
   applications = "${homeDirectory}/.nix-profile/share/applications";
 
 in {
@@ -12,9 +11,7 @@ in {
   # paths it should manage.
   home.username = username;
   home.homeDirectory = homeDirectory;
-  home.packages = pkgs.callPackage ./common/packages.nix {} ++ platPkgs;
-
-  imports = [ ./common ];
+  home.packages = pkgs.callPackage ./packages.nix {};
 
   programs.bash.enable = true;
 
@@ -33,5 +30,4 @@ in {
       Categories=System;TerminalEmulator;
     '';
   }; 
-
 }
