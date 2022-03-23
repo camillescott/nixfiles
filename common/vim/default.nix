@@ -11,6 +11,17 @@ let
     postFixup = postFixup;
   };
 
+  pluginFromRev = {repo, rev, ref ? "HEAD", postFixup ? ""}: pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "${lib.strings.sanitizeDerivationName repo}";
+    version = rev;
+    src = builtins.fetchGit {
+      url = "https://github.com/${repo}.git";
+      rev = rev;
+      ref = ref;
+    };
+    postFixup = postFixup;
+  };
+
 in {
 
   programs.neovim = {
@@ -69,6 +80,12 @@ in {
       (plugin {repo = "franbach/miramare";})
       (plugin {repo = "b4skyx/serenade";})
       (plugin {repo = "arcticicestudio/nord-vim";})
+      (pluginFromRev {
+         rev = "d83145614e8082b24a001643f1c6c00c0ea9aaef";
+         ref = "main";
+         repo = "EdenEast/nightfox.nvim";
+       }
+      )
 
       # documentation plugins
       (let

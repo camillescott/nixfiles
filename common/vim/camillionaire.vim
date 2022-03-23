@@ -201,7 +201,7 @@ call s:HL('StatusLineTermNC', s:palette.grey, s:palette.bg1, 'undercurl', s:pale
 call s:HL('TabLine', s:palette.fg, s:palette.bg4)
 call s:HL('TabLineFill', s:palette.grey, s:palette.bg1)
 call s:HL('TabLineSel', s:palette.bg0, s:palette.green)
-call s:HL('VertSplit', s:palette.bg1, s:palette.none, 'bold')
+call s:HL('VertSplit', s:palette.bg4, s:palette.none, 'bold')
 call s:HL('Visual', s:palette.bg0, s:palette.gold)
 call s:HL('VisualNOS', s:palette.bg0, s:palette.gold, 'underline')
 call s:HL('CursorIM', s:palette.none, s:palette.fg)

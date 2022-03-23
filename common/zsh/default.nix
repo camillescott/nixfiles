@@ -52,6 +52,7 @@
     shellAliases = {
       ".." = "cd ..";
       "cpufreq" = "watch -n1 \"grep \"^[c]pu MHz\" /proc/cpuinfo\"";
+      "last-dmesg" = "journalctl -o short-precise -k -b -1";
     };
     initExtraFirst = lib.strings.fileContents ./functions.zsh;
     initExtra = ''
