@@ -1,6 +1,7 @@
 { pkgs }:
 
 with pkgs; [
+  nixUnstable
   bfg-repo-cleaner
   figlet
   ncdu
