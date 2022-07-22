@@ -1,21 +1,9 @@
-{ config, pkgs, lib, ... }:
-let
+{ config, pkgs, lib, ... }: {
 
-  username = "camille";
-  homeDirectory = "/Users/camille";
-  platPkgs = pkgs.callPackage ./darwin/packages.nix {};
+  home.packages = with pkgs; [
 
-in  {
+  ];
 
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = username;
-  home.homeDirectory = homeDirectory;
-  home.packages = platPkgs;
+  imports = [ ./darwin ./common ./common/kitty ];
 
-  imports = [ ./common ./common/kitty ./darwin/copyApplications.nix ];
-
-  targets.darwin  = {
-    search = "Google";
-  };
 }

@@ -1,5 +1,5 @@
 { pkgs }:
 with pkgs; [
-  texlive.combined.scheme-medium
+  texlive.combined.scheme-full
 ]
 
