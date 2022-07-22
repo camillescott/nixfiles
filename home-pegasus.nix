@@ -5,5 +5,4 @@
   ];
 
   imports = [ ./linux ./common ./common/kitty ];
-
 }
