@@ -13,7 +13,7 @@ in  {
   home.homeDirectory = homeDirectory;
   home.packages = platPkgs;
 
-  imports = [ ./common ./darwin/copyApplications.nix ];
+  imports = [ ./common ./common/kitty ./darwin/copyApplications.nix ];
 
   targets.darwin  = {
     search = "Google";

@@ -4,6 +4,6 @@
 
   ];
 
-  imports = [ ./linux ./common ./common/kitty ];
+  imports = [ ./linux ./common ];
 
 }

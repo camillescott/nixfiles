@@ -6,6 +6,6 @@
     igv
   ];
 
-  imports = [ ./linux ./common ];
+  imports = [ ./linux ./common ./common/kitty ];
 
 }
