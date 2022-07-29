@@ -9,4 +9,6 @@ with pkgs; [
   parallel
   sshuttle
   mosh
+  obsidian
+  html-tidy
 ]
