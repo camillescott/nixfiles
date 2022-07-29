@@ -45,6 +45,9 @@
       pull = {
         rebase = false;
       };
+      init = {
+        defaultBranch = "main";
+      };
     };
   };
 
