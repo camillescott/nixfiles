@@ -11,7 +11,10 @@ in {
   home.homeDirectory = homeDirectory;
   home.packages = pkgs.callPackage ./packages.nix {};
 
-  programs.bash.enable = true;
+  programs.bash = {
+    enable = true;
+    profileExtra = "export XDG_DATA_DIRS=\"$HOME/.nix-profile/share:$XDG_DATA_DIRS\"";
+  };
 
   programs.zsh.initExtra = ''
     __conda_setup="$('${config.home.homeDirectory}/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -42,4 +45,16 @@ in {
       Categories=System;TerminalEmulator;
     '';
   }; 
+
+  #xdg.dataFile."applications/Obsidian.desktop" = {
+  #  text = ''
+  #    [Desktop Entry]
+  #    Version=1.0
+  #    Type=Application
+  #    Name=Obsidian
+  #    GenericName=Notetaking application
+  #    TryExec=obsidian
+  #    Exec=nixGLIntel obsidian
+  #  '';
+  #};
 }

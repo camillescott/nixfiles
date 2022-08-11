@@ -24,8 +24,7 @@ endif
 set nowrap
 set number
 
-" NerdTree mapping
-map <F2> :NERDTreeToggle<CR>
+
 
 function! StatusDiagnostic() abort
   let info = get(b:, 'coc_diagnostic_info', {})
@@ -40,6 +39,9 @@ function! StatusDiagnostic() abort
   return join(msgs, ' ') . ' ' . get(g:, 'coc_status', '')
 endfunction
 
+" NerdTree mapping
+map <F2> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 let g:NERDTreeLimitedSyntax = 1
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1

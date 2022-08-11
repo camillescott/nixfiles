@@ -2,14 +2,14 @@
    programs.kitty = {
     enable = true;
     settings = {
-      scrollback_lines           = 10000;
+      scrollback_lines           = 100000;
       enable_audio_bell          = false;
       tab_bar_style              = "separator";
 
-      font_family                = "Operator Mono Lig Book";
-      bold_font                  = "Operator Mono Lig Book";
-      italic_font                = "Operator Mono Lig Book Italic";
-      bold_italic_font           = "Operator Mono Lig Book Italic";
+      font_family                = "Operator Mono Book";
+      bold_font                  = "Operator Mono Book";
+      italic_font                = "Operator Mono Book Italic";
+      bold_italic_font           = "Operator Mono Book Italic";
       font_size                  = "13";
 
       single_window_margin_width = 0;

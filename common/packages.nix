@@ -9,6 +9,6 @@ with pkgs; [
   parallel
   sshuttle
   mosh
-  obsidian
+  #obsidian
   html-tidy
 ]
