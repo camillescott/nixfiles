@@ -41,7 +41,7 @@ in {
     plugins = with pkgs.vimPlugins; [
       { 
         plugin = coc-nvim;
-        config = "let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-yaml', 'coc-cmake']";
+        config = "let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-yaml', 'coc-cmake', 'coc-r-lsp']";
       }
       #coc-cmake
       coc-fzf
@@ -115,6 +115,7 @@ in {
       (plugin {repo = "tshirtman/vim-cython";})
       (plugin {repo = "plasticboy/vim-markdown";})
       (plugin {repo = "lepture/vim-jinja";})
+      (plugin {repo = "rodjek/vim-puppet";})
     ];
     coc = {
       enable = true;
@@ -142,6 +143,8 @@ in {
         };
         "jedi.enable" = true;
         "jedi.hover.enable" = true;
+        "r.lsp.path" = "/usr/bin/R";
+        "r.lsp.debug" = true;
       };
     };
   };

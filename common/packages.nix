@@ -11,4 +11,5 @@ with pkgs; [
   mosh
   #obsidian
   html-tidy
+  csvtool
 ]
