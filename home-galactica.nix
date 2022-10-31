@@ -4,6 +4,7 @@
     texlive.combined.scheme-full
     foxitreader
     igv
+    wireshark
   ];
 
   imports = [ ./linux ./common ./common/kitty ];
