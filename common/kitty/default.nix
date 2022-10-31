@@ -15,7 +15,8 @@
       single_window_margin_width = 0;
       window_margin_width        = 0;
       window_padding_width       = 0;
-      window_border_width        = 0;
+      window_border_width        = 1;
+      draw_minimal_borders       = true;
       hide_window_decorations    = false;
       placement_strategy         = "top-left";
 
