@@ -1,5 +1,5 @@
 {
-  "editor.fontFamily": "'Dank Mono', 'PT Mono', Menlo, Monaco, 'Courier New',monospace",
+  "editor.fontFamily": "'Operator Mono Book', 'PT Mono', Menlo, Monaco, 'Courier New',monospace",
   "editor.fontWeight": "700",
   "editor.fontSize": 14,
   "editor.fontLigatures": true,
@@ -8,12 +8,12 @@
   "editor.suggestSelection": "first",
 
   "workbench.fontAliasing": "antialiased",
-  "workbench.colorTheme": "Ranier - Shadow",
+  "workbench.colorTheme": "Rainier",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.editor.wrapTabs": true,
   "workbench.editor.enablePreview": false,
 
-  "vim.easymotionMarkerFontFamily": "Dank Mono', 'PT Mono', Menlo, Monaco, 'Courier New', monospace",
+  "vim.easymotionMarkerFontFamily": "'Operator Mono Book', 'PT Mono', Menlo, Monaco, 'Courier New', monospace",
   "vim.easymotionMarkerHeight": 18,
   "vim.easymotionMarkerFontWeight": "bold",
   "vim.easymotionMarkerBackgroundColor": "#1e1e1e",
