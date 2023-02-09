@@ -18,14 +18,14 @@
         "gitfast"
         "github"
         "pip"
-        "ssh-agent"
+        #"ssh-agent"
         "colorize"
         "colored-man-pages"
         "catimg"
       ];
-      extraConfig = ''
-        zstyle :omz:plugins:ssh-agent agent-forwarding on
-      '';
+      #extraConfig = ''
+      #  zstyle :omz:plugins:ssh-agent agent-forwarding on
+      #'';
       custom = "${config.home.homeDirectory}/nixfiles/common/oh-my-zsh";
       theme = "camillescott";
     };
