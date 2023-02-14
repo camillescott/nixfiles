@@ -1,8 +1,9 @@
+# Directory matching
 MATCH_PATH = [
-  # (directory pattern, identity)
   (r"/work/HPCCF", "work")
 ]
 
+# `ssh` ARGV matching
 MATCH_ARGV = [
   (r"ucdavis", "work"),
   (r"[\w\.]*\.mcb$", "work"),
@@ -18,5 +19,6 @@ DEFAULT_IDENTITY = "home"
 #SSH_ADD_OPTIONS = {}
 
 SSH_DEFAULT_OPTIONS = ""
+#SSH_ADD_DEFAULT_OPTIONS = "-c"
 
 VERBOSITY = LOG_DEBUG
