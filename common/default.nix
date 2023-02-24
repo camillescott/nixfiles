@@ -56,10 +56,6 @@
     enableZshIntegration = true;
   };
 
-  xdg.configFile."Code/User/settings.json" = {
-    source = ./vscode/settings.json;
-  };
-
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
   '';

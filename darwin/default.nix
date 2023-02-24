@@ -16,4 +16,8 @@ in  {
   targets.darwin  = {
     search = "Google";
   };
+
+  home.file."Library/Application Support/Code/User/settings.json" = {
+    source = ../common/vscode/settings.json;
+  };
 }

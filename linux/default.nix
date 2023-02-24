@@ -30,6 +30,10 @@ in {
     unset __conda_setup
   '';
 
+  xdg.configFile."Code/User/settings.json" = {
+    source = ./vscode/settings.json;
+  };
+
   # Build a .desktop file for kitty that launches it with nixGL
   xdg.dataFile."applications/kitty.desktop" = {
     text = ''
