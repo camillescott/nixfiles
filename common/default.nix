@@ -1,6 +1,6 @@
 { config, pkgs, lib, ...}: {
 
-  imports = [ ./vim ./zsh ];
+  imports = [ ./vim ./zsh ./ssh-ident ];
 
   home.packages = pkgs.callPackage ./packages.nix {};
   home.file.".condarc".source = ./conda/condarc;
@@ -47,6 +47,10 @@
       };
       init = {
         defaultBranch = "main";
+      };
+
+      ssh = {
+        variant = "ssh";
       };
     };
   };

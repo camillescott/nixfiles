@@ -18,14 +18,14 @@
         "gitfast"
         "github"
         "pip"
-        "ssh-agent"
+        #"ssh-agent"
         "colorize"
         "colored-man-pages"
         "catimg"
       ];
-      extraConfig = ''
-        zstyle :omz:plugins:ssh-agent agent-forwarding on
-      '';
+      #extraConfig = ''
+      #  zstyle :omz:plugins:ssh-agent agent-forwarding on
+      #'';
       custom = "${config.home.homeDirectory}/nixfiles/common/oh-my-zsh";
       theme = "camillescott";
     };
@@ -51,7 +51,7 @@
     };
     shellAliases = {
       ".." = "cd ..";
-      "cpufreq" = "watch -n1 \"grep \"^[c]pu MHz\" /proc/cpuinfo\"";
+      "cpufreq" = "watch -n1 \"grep '^cpu MHz' /proc/cpuinfo\"";
       "last-dmesg" = "journalctl -o short-precise -k -b -1";
     };
     initExtraFirst = lib.strings.fileContents ./functions.zsh;
