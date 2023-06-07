@@ -13,4 +13,5 @@ with pkgs; [
   #obsidian
   html-tidy
   csvtool
+  meld
 ]
