@@ -10,7 +10,7 @@ in {
   home.file.".ssh-ident".source = ./config.py;
 
   programs.zsh.shellAliases = {
-    "sshuttle" = "sshuttle -e ${ssh-ident}/bin/ssh-ident"; 
+    #"sshuttle" = "sshuttle -e ${ssh-ident}/bin/ssh-ident"; 
   };
 
   programs.zsh.sessionVariables = {
