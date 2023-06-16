@@ -89,8 +89,9 @@ let g:doge_doc_standard_python = 'google'
 let g:doge_python_settings = {'single_quotes': 1}
 
 " fzf
-nmap ; :Buffers<CR>
-nmap <Leader>t :Files<CR>
+nmap ; :Files<CR>
+nmap <Leader>g :GFiles<CR>
+nmap <Leader>t :Buffers<CR>
 nmap <Leader>r :Tags<CR>
 
 let g:vista_default_executive = 'coc'
