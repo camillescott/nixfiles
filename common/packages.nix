@@ -14,4 +14,5 @@ with pkgs; [
   html-tidy
   csvtool
   meld
+  jq
 ]
