@@ -122,3 +122,5 @@ motd() {
     tput sgr 0
     echo
 }
+
+export XCURSOR_PATH=$RUNTIME/usr/share/icons
