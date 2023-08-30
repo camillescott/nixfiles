@@ -11,7 +11,8 @@ MATCH_ARGV = [
   (r"acheron", "work"),
   (r"[\w\.]*\.lan$", "home"),
   (r"[\w\.]*\.bogg\.cc$", "home"),
-  (r"[\w\.]*\.zt$", "home")
+  (r"[\w\.]*\.zt$", "home"),
+  (r"10\.241\.[0-9]+\.[0-9]+", "home")
 ]
 
 DEFAULT_IDENTITY = "home"
