@@ -9,6 +9,7 @@ MATCH_ARGV = [
   (r"[\w\.]*\.mcb$", "work"),
   (r"[\w\.]*\.hpc$", "work"),
   (r"acheron", "work"),
+  (r"login.expanse.sdsc.edu", "work"),
   (r"[\w\.]*\.lan$", "home"),
   (r"[\w\.]*\.bogg\.cc$", "home"),
   (r"[\w\.]*\.zt$", "home"),
