@@ -11,7 +11,8 @@ in {
 
   programs.zsh.shellAliases = {
     mosh = "mosh --ssh=`which ssh`";
-    sshuttle = "sshuttle -e ssh-ident"; 
+    sshuttle = "sshuttle -e ssh-ident";
+    scp = "scp -S `which ssh`";
   };
 
   programs.zsh.sessionVariables = {

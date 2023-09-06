@@ -17,7 +17,6 @@ stdenv.mkDerivation {
 		cp ssh-ident $out/bin/
 		chmod +x $out/bin/ssh-ident
 		ln -s $out/bin/ssh-ident $out/bin/ssh
-		ln -s $out/bin/ssh-ident $out/bin/scp
 		ln -s $out/bin/ssh-ident $out/bin/sftp
 	'';
 
