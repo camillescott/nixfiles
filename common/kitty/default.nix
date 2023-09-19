@@ -1,6 +1,12 @@
 { config, pkgs, lib, ... }: {
    programs.kitty = {
     enable = true;
+    keybindings = {
+      "ctrl+shift+right" = "next_window";
+      "ctrl+shift+left" = "previous_window";
+      "ctrl+shift+]" = "next_tab";
+      "ctrl+shift+[" = "previous_tab";
+    };
     settings = {
       scrollback_lines           = 100000;
       enable_audio_bell          = false;

@@ -5,6 +5,10 @@
   home.packages = pkgs.callPackage ./packages.nix {};
   home.file.".condarc".source = ./conda/condarc;
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -30,6 +34,13 @@
         TIME
         COMM
       ];
+    };
+  };
+
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "ssh";
     };
   };
 

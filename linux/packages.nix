@@ -2,5 +2,6 @@
 with pkgs; let pkgsNixGL = import <nixgl> {}; in [
   pkgsNixGL.nixGLIntel
   tmux
+  foliate
 ]
 
