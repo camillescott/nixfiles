@@ -16,7 +16,7 @@ conda_prompt_info() {
 }
 
 pyversion() {
-    echo "`python -c 'import sys; print(str(sys.version_info[0])+"."+str(sys.version_info[1]))'`"
+    echo "`python3 -c 'import sys; print(str(sys.version_info[0])+"."+str(sys.version_info[1]))'`"
 }
 
 py_prompt_info() {
