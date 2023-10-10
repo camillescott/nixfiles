@@ -41,7 +41,7 @@ in {
     plugins = with pkgs.vimPlugins; [
       { 
         plugin = coc-nvim;
-        config = "let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-yaml', 'coc-cmake', 'coc-r-lsp']";
+        config = "let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-yaml', 'coc-cmake', 'coc-r-lsp', 'coc-snippets']";
       }
       #coc-cmake
       coc-fzf
