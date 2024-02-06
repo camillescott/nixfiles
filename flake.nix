@@ -18,7 +18,7 @@
                 # Note: I am sure this could be done better with flake-utils or something
                 pkgs = import nixpkgs { system = "x86_64-linux"; };
 
-                modules = [ ./home.nix ]; # Defined later
+                modules = [ ./home-hpccf.nix ]; # Defined later
             };
         };
     };
