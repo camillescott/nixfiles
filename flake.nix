@@ -9,16 +9,24 @@
         };
     };
 
-    outputs = {nixpkgs, home-manager, ...}: {
+    outputs = {nixpkgs, home-manager, ...} @ inputs: 
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
         # For `nix run .` later
         defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
 
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+
         homeConfigurations = {
             "camw" = home-manager.lib.homeManagerConfiguration {
-                # Note: I am sure this could be done better with flake-utils or something
-                pkgs = import nixpkgs { system = "x86_64-linux"; };
-
-                modules = [ ./home-hpccf.nix ]; # Defined later
+                inherit pkgs;
+                modules = [ ./home-hpccf.nix ];
+                extraSpecialArgs = inputs // {
+                    isNixOs = false;
+                };
             };
         };
     };
