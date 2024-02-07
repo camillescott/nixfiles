@@ -1,6 +1,6 @@
 { config, pkgs, lib, ...}: {
 
-  imports = [ ./vim ./zsh ./ssh-ident ];
+  imports = [ ./vim ./zsh ];
 
   home.packages = pkgs.callPackage ./packages.nix {};
   home.file.".condarc".source = ./conda/condarc;
@@ -71,9 +71,9 @@
     enableZshIntegration = true;
   };
 
-  xdg.configFile."nix/nix.conf".text = ''
-    experimental-features = nix-command flakes
-  '';
+  #xdg.configFile."nix/nix.conf".text = ''
+  #  experimental-features = nix-command flakes
+  #'';
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -83,5 +83,5 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.11";
+  home.stateVersion = "23.05";
 }
