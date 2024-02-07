@@ -20,12 +20,6 @@ in {
   };
 
   programs.zsh = {
-    initExtraFirst = ''
-      export TERM=xterm-256color
-      export PATH=$HOME/.nix-profile/bin:$PATH
-      export LANG=C.UTF-8
-      ${homeDirectory}/.local/bin/nix shell nixpkgs#nix nixpkgs#zsh --command zsh
-
-    '';
+    dotDir = ".config/zsh";
   };
 }
