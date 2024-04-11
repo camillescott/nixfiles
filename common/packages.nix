@@ -8,6 +8,7 @@ with pkgs; [
   ncdu
   pandoc
   parallel
+  ripgrep
   sshuttle
   mosh
   #obsidian
@@ -15,4 +16,5 @@ with pkgs; [
   csvtool
   meld
   jq
+  speedtest-rs
 ]
