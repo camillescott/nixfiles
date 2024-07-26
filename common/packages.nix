@@ -16,5 +16,6 @@ with pkgs; [
   csvtool
   meld
   jq
+  jxplorer
   speedtest-rs
 ]
