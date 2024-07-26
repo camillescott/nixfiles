@@ -1,7 +1,7 @@
 { pkgs }:
 
 with pkgs; [
-  nixUnstable
+  nixVersions.latest
   bfg-repo-cleaner
   figlet
   toilet

@@ -41,7 +41,7 @@ in {
     plugins = with pkgs.vimPlugins; [
       { 
         plugin = coc-nvim;
-        config = "let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-yaml', 'coc-cmake', 'coc-r-lsp', 'coc-snippets']";
+        config = "let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-pyright', 'coc-yaml', 'coc-cmake', 'coc-r-lsp', 'coc-snippets']";
       }
       #coc-cmake
       coc-fzf
@@ -87,24 +87,26 @@ in {
        }
       )
 
+      #
       # documentation plugins
-      (let
-        doge-ref = "v3.11.0";
-        doge-release = fetchTarball {
-          url = "https://github.com/kkoomen/vim-doge/releases/download/${doge-ref}/vim-doge-linux.tar.gz";
-          sha256 = "1ib2fq5aix9z736j8nqzjamcmbv2lsnirwipdlddaypw794lkc94";
-        };
-       in
-       plugin {ref = "refs/tags/${doge-ref}";
-               repo = "kkoomen/vim-doge";
-               # fetchTarBall removes the top-level directory from the archive, but
-               # the doge releases don't have one -- so, the binary itself ends up being
-               # saved to a file at doge-release. So, we copy that file directly.
-               postFixup = ''
-                 mkdir -p $out/bin
-                 cp ${doge-release} $out/bin/vim-doge
-               '';}
-      )
+      # 
+      # single-item tarballs are currently broken: https://github.com/NixOS/nix/issues/10983
+      #(let
+      #  doge-ref = "v4.7.0";
+      #  doge-release = fetchTarball {
+      #    url = "https://github.com/kkoomen/vim-doge/releases/download/${doge-ref}/vim-doge-helper-linux-x86_64.tar.gz";
+      #  };
+      # in
+      # plugin {ref = "refs/tags/${doge-ref}";
+      #         repo = "kkoomen/vim-doge";
+      #         # fetchTarBall removes the top-level directory from the archive, but
+      #         # the doge releases don't have one -- so, the binary itself ends up being
+      #         # saved to a file at doge-release. So, we copy that file directly.
+      #         postFixup = ''
+      #           mkdir -p $out/bin
+      #           cp ${doge-release}/vim-doge-helper $out/bin/vim-doge-helper
+      #         '';}
+      #)
       (plugin {repo = "alpertuna/vim-header";})
       (plugin {repo = "luochen1990/rainbow";})
 
@@ -145,6 +147,8 @@ in {
         "jedi.hover.enable" = true;
         "r.lsp.path" = "/usr/bin/R";
         "r.lsp.debug" = true;
+        "pyright.inlayHints.parameterTypes" = false;
+        "pyright.inlayHints.variableTypes" = false;
       };
     };
   };
