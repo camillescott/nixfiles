@@ -50,6 +50,9 @@ in {
       #coc-pyright
       #coc-yaml
       vim-devicons
+      #nvim-treesitter
+      #nvim-treesitter-parsers.python
+      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
 
       (plugin {repo = "godlygeek/tabular";})
 
