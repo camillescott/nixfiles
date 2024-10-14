@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   # convenenience: installs a vim plugin from git with a given tag / branch
-  plugin = {ref ? "HEAD", repo, postFixup ? ""}: pkgs.vimUtils.buildVimPluginFrom2Nix {
+  plugin = {ref ? "HEAD", repo, postFixup ? ""}: pkgs.vimUtils.buildVimPlugin {
     pname = "${lib.strings.sanitizeDerivationName repo}";
     version = baseNameOf ref;
     src = builtins.fetchGit {
@@ -11,7 +11,7 @@ let
     postFixup = postFixup;
   };
 
-  pluginFromRev = {repo, rev, ref ? "HEAD", postFixup ? ""}: pkgs.vimUtils.buildVimPluginFrom2Nix {
+  pluginFromRev = {repo, rev, ref ? "HEAD", postFixup ? ""}: pkgs.vimUtils.buildVimPlugin {
     pname = "${lib.strings.sanitizeDerivationName repo}";
     version = rev;
     src = builtins.fetchGit {
@@ -50,8 +50,6 @@ in {
       #coc-pyright
       #coc-yaml
       vim-devicons
-      #nvim-treesitter
-      #nvim-treesitter-parsers.python
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
 
       (plugin {repo = "godlygeek/tabular";})
@@ -94,22 +92,22 @@ in {
       # documentation plugins
       # 
       # single-item tarballs are currently broken: https://github.com/NixOS/nix/issues/10983
-      #(let
-      #  doge-ref = "v4.7.0";
-      #  doge-release = fetchTarball {
-      #    url = "https://github.com/kkoomen/vim-doge/releases/download/${doge-ref}/vim-doge-helper-linux-x86_64.tar.gz";
-      #  };
-      # in
-      # plugin {ref = "refs/tags/${doge-ref}";
-      #         repo = "kkoomen/vim-doge";
-      #         # fetchTarBall removes the top-level directory from the archive, but
-      #         # the doge releases don't have one -- so, the binary itself ends up being
-      #         # saved to a file at doge-release. So, we copy that file directly.
-      #         postFixup = ''
-      #           mkdir -p $out/bin
-      #           cp ${doge-release}/vim-doge-helper $out/bin/vim-doge-helper
-      #         '';}
-      #)
+      (let
+        doge-ref = "v4.7.0";
+        doge-release = fetchTarball {
+          url = "https://github.com/kkoomen/vim-doge/releases/download/${doge-ref}/vim-doge-helper-linux-x86_64.tar.gz";
+        };
+       in
+       plugin {ref = "refs/tags/${doge-ref}";
+               repo = "kkoomen/vim-doge";
+               # fetchTarBall removes the top-level directory from the archive, but
+               # the doge releases don't have one -- so, the binary itself ends up being
+               # saved to a file at doge-release. So, we copy that file directly.
+               postFixup = ''
+                 mkdir -p $out/bin
+                 cp ${doge-release}/vim-doge-helper $out/bin/vim-doge-helper
+               '';}
+      )
       (plugin {repo = "alpertuna/vim-header";})
       (plugin {repo = "luochen1990/rainbow";})
 
