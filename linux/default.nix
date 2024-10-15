@@ -31,7 +31,7 @@ in {
   '';
 
   xdg.configFile."Code/User/settings.json" = {
-    source = ./vscode/settings.json;
+    source = ../common/vscode/settings.json;
   };
 
   # Build a .desktop file for kitty that launches it with nixGL
@@ -44,7 +44,7 @@ in {
       GenericName=Terminal emulator
       Comment=A fast, feature full, GPU based terminal emulator
       TryExec=kitty
-      Exec=nixGLIntel kitty
+      Exec=nixGL kitty
       Icon=${homeDirectory}/.nix-profile/share/icons/hicolor/256x256/apps/kitty.png
       Categories=System;TerminalEmulator;
     '';

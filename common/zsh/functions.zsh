@@ -1,29 +1,31 @@
+#trap 'echo "Error occurred at ${funcfiletrace[1]}: $?"' ERR
+
 HOSTNAME="$(hostname)"  # Conda clobbers HOST, so we save the real hostname into another variable.
 
-precmd() {
+function precmd() {
   OLDHOST="${HOST}"
   HOST="${HOSTNAME}"
 }
 
-preexec() {
+function preexec() {
   HOST="${OLDHOST}"
 }
 
-conda_prompt_info() {
-    if [ -n "$CONDA_DEFAULT_ENV" ]; then
-        echo "$ZSH_THEME_CONDA_ENV_PROMPT_PREFIX$CONDA_DEFAULT_ENV$ZSH_THEME_CONDA_ENV_PROMPT_SUFFIX"
-    fi
-}
+#function conda_prompt_info() {
+#    if [ -n "$CONDA_DEFAULT_ENV" ]; then
+#        echo "$ZSH_THEME_CONDA_ENV_PROMPT_PREFIX$CONDA_DEFAULT_ENV$ZSH_THEME_CONDA_ENV_PROMPT_SUFFIX"
+#    fi
+#}
 
-pyversion() {
+function pyversion() {
     echo "`python3 -c 'import sys; print(str(sys.version_info[0])+"."+str(sys.version_info[1]))'`"
 }
 
-py_prompt_info() {
-    echo '$ZSH_THEME_PY_PROMPT_PREFIX''$(pyversion)''$ZSH_THEME_PY_PROMPT_SUFFIX'
+function py_prompt_info() {
+    echo "$ZSH_THEME_PY_PROMPT_PREFIX$(pyversion)$ZSH_THEME_PY_PROMPT_SUFFIX"
 }
 
-centerf() {
+function centerf() {
   if [[ -n "$2" ]]
   then
     padding="$(printf '%0.1s' "$2"{1..500})"
@@ -36,16 +38,16 @@ centerf() {
   printf '%*.*s %s %*.*s\n' 0 "$(((termwidth-2-${#1})/2))" "$padding" "$1" 0 "$(((termwidth-1-${#1})/2))" "$padding"
 }
 
-acenterf() {
+function acenterf() {
     local IFS=$'\n'
     for line ($=1) centerf "$line" $2
 }
 
-motd_welcome() {
+function motd_welcome() {
     centerf "welcome, $USER"
 }
 
-motd_unames() {
+function motd_unames() {
     if [[ `uname -s` == 'Darwin' ]]; then
         centerf "`uname -srm`"
     else
@@ -55,7 +57,7 @@ motd_unames() {
     fi
 }
 
-motd_cpuinfo() {
+function motd_cpuinfo() {
     if [[ `uname -s` == 'Darwin' ]]; then
         centerf "`hostinfo | grep physically`"
         centerf "`hostinfo | grep logically`"
@@ -64,7 +66,7 @@ motd_cpuinfo() {
     fi
 }
 
-motd_meminfo() {
+function motd_meminfo() {
     if [[ `uname -s` == 'Darwin' ]]; then 
         centerf "`hostinfo | grep memory`"
     else
@@ -72,7 +74,7 @@ motd_meminfo() {
     fi
 }
 
-motd_dfinfo() {
+function motd_dfinfo() {
     if [[ `uname -s` == 'Darwin' ]]; then 
         acenterf "`df -lh | grep /dev/disk1s1 | awk '{print $3,"of",$2,"("$5") used on "$9}'`"
     else
@@ -82,16 +84,16 @@ motd_dfinfo() {
 
 export COLS=`tput cols`
 
-div() {
+function div() {
     tput sgr 0; tput bold; tput setaf 4; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =; tput sgr 0
 }
 
-smalldiv() {
+function smalldiv() {
     tput bold; tput setaf 4; centerf '********************'; tput sgr 0
 }
 
 
-motd() {
+function motd() {
     div
     echo
     echo

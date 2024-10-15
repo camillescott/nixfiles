@@ -1,6 +1,6 @@
 { pkgs }:
 with pkgs; let pkgsNixGL = import <nixgl> {}; in [
-  pkgsNixGL.nixGLIntel
+  pkgsNixGL.auto.nixGLDefault
   tmux
 ]
 

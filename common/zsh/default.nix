@@ -22,6 +22,7 @@
         "colorize"
         "colored-man-pages"
         "catimg"
+        "conda-env"
       ];
       #extraConfig = ''
       #  zstyle :omz:plugins:ssh-agent agent-forwarding on
@@ -44,10 +45,10 @@
       EDITOR = "vim";
       GCC_COLORS = "error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01";
       VIRTUAL_ENV_DISABLE_PROMPT = 1;
-      ZSH_THEME_CONDA_ENV_PROMPT_PREFIX = "‹";
-      ZSH_THEME_CONDA_ENV_PROMPT_SUFFIX = "› ";
-      ZSH_THEME_PY_PROMPT_PREFIX = "⟮py";
-      ZSH_THEME_PY_PROMPT_SUFFIX = "⟯ ";
+      #ZSH_THEME_CONDA_PREFIX = "%F{magenta}‹";
+      #ZSH_THEME_CONDA_SUFFIX = "› %f";
+      #ZSH_THEME_PY_PROMPT_PREFIX = "⟮py";
+      #ZSH_THEME_PY_PROMPT_SUFFIX = "⟯ ";
     };
     shellAliases = {
       ".." = "cd ..";

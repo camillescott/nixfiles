@@ -15,6 +15,7 @@ with pkgs; [
   html-tidy
   csvtool
   meld
+  jc
   jq
   yq-go
   dyff

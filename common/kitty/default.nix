@@ -3,14 +3,23 @@
     enable = true;
     keybindings = {
       "ctrl+shift+right" = "next_window";
-      "ctrl+shift+left" = "previous_window";
-      "ctrl+shift+]" = "next_tab";
-      "ctrl+shift+[" = "previous_tab";
+      "ctrl+shift+left"  = "previous_window";
+      "ctrl+shift+]"     = "next_tab";
+      "ctrl+shift+["     = "previous_tab";
+      "f4"               = "launch --location=split";
+      "f5"               = "launch --location=hsplit";
+      "f6"               = "launch --location=vsplit";
+      "shift+up"         = "move_window up";
+      "shift+left"       = "move_window left";
+      "shift+right"      = "move_window right";
+      "shift+down"       = "move_window down";
     };
     settings = {
-      scrollback_lines           = 100000;
+      scrollback_lines           = 500000;
       enable_audio_bell          = false;
-      tab_bar_style              = "separator";
+      #tab_bar_style              = "separator";
+      tab_bar_style              = "powerline";
+      tab_powerline_style        = "slanted";
 
       font_family                = "Operator Mono Book";
       bold_font                  = "Operator Mono Book";
@@ -25,6 +34,8 @@
       draw_minimal_borders       = true;
       hide_window_decorations    = false;
       placement_strategy         = "top-left";
+      wayland_titlebar_color     = "#282a36";
+      enabled_layouts            = "horizontal,splits";
 
       #background                 = "#0d1117";
       background                 = "#080808";
