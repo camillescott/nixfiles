@@ -3,7 +3,7 @@
   programs.zsh = {
     enable = true;
     autocd = false;
-    enableAutosuggestions = false;
+    autosuggestion.enable = false;
     history = {
       expireDuplicatesFirst = true;
       extended = true;

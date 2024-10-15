@@ -12,6 +12,8 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  nix.package = pkgs.nixVersions.latest;
+
   programs.htop = {
     enable = true;
     settings = {
