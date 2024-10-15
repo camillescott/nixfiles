@@ -39,6 +39,13 @@
     };
   };
 
+  programs.tmux = {
+    enable = true;
+    mouse = true;
+    historyLimit = 500000;
+    terminal = "screen-256color";
+  };
+
   programs.gh = {
     enable = true;
     settings = {

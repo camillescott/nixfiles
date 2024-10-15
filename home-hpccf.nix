@@ -9,7 +9,6 @@ in {
   home.username = username;
   home.homeDirectory = homeDirectory;
   home.packages = with pkgs; [
-    tmux
   ];
 
   imports = [ ./common ];
