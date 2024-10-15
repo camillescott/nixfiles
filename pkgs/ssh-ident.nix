@@ -12,6 +12,8 @@ stdenv.mkDerivation {
 		sha256 = "sha256-ThUEhwfw4B5BBEYU8UJspgMKgN8kgFVGHD43AO1el5g=";
 	};
 
+	buildInputs = [ python3 ];
+
 	installPhase = ''
 		mkdir -p $out/bin
 		cp ssh-ident $out/bin/

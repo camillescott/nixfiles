@@ -7,6 +7,8 @@ let
 
 in {
 
+  imports = [ ../common/ssh-ident ];
+
   home.username = username;
   home.homeDirectory = homeDirectory;
   home.packages = pkgs.callPackage ./packages.nix {};

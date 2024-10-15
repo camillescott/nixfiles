@@ -1,6 +1,6 @@
 { config, pkgs, lib, ...}: {
 
-  imports = [ ./vim ./zsh ./ssh-ident ];
+  imports = [ ./vim ./zsh ];
 
   home.packages = pkgs.callPackage ./packages.nix {};
   home.file.".condarc".source = ./conda/condarc;
