@@ -24,8 +24,6 @@ endif
 set nowrap
 set number
 
-
-
 function! StatusDiagnostic() abort
   let info = get(b:, 'coc_diagnostic_info', {})
   if empty(info) | return '' | endif
@@ -86,7 +84,10 @@ let orgfoldexpr=&foldexpr
 
 " vim-doge doc generation
 let g:doge_doc_standard_python = 'google'
-let g:doge_python_settings = {'single_quotes': 1}
+let g:doge_python_settings = {
+\  'single_quotes': 1,
+\  'omit_redundant_param_types': 1
+\}
 
 " fzf
 nmap ; :Files<CR>
