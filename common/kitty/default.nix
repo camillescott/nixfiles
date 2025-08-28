@@ -2,22 +2,28 @@
    programs.kitty = {
     enable = true;
     keybindings = {
-      "ctrl+shift+right" = "next_window";
-      "ctrl+shift+left"  = "previous_window";
+      #"ctrl+shift+right" = "next_window";
+      #"ctrl+shift+left"  = "previous_window";
       "ctrl+shift+]"     = "next_tab";
       "ctrl+shift+["     = "previous_tab";
-      "f4"               = "launch --location=split";
-      "f5"               = "launch --location=hsplit";
-      "f6"               = "launch --location=vsplit";
+      "ctrl+f4"          = "launch --location=split";
+      "ctrl+f5"          = "launch --location=hsplit";
+      "ctrl+f6"          = "launch --location=vsplit";
+      "ctrl+f7"          = "layout_action rotate";
       "shift+up"         = "move_window up";
       "shift+left"       = "move_window left";
       "shift+right"      = "move_window right";
       "shift+down"       = "move_window down";
+      "ctrl+shift+up"    = "layout_action move_to_screen_edge top";
+      "ctrl+shift+left"  = "layout_action move_to_screen_edge left";
+      "ctrl+shift+right" = "layout_action move_to_screen_edge right";
+      "ctrl+shift+down"  = "layout_action move_to_screen_edge bottom";
     };
     settings = {
       scrollback_lines           = 500000;
       enable_audio_bell          = false;
       #tab_bar_style              = "separator";
+      tab_bar_edge               = "top";
       tab_bar_style              = "powerline";
       tab_powerline_style        = "slanted";
 
