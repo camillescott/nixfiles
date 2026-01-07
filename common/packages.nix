@@ -4,6 +4,7 @@ with pkgs; [
   nixVersions.latest
   bfg-repo-cleaner
   figlet
+  #handbrake
   toilet
   ncdu
   pandoc

@@ -8,6 +8,12 @@ let
 in {
 
   imports = [ ../common/ssh-ident ];
+  targets.genericLinux.enable = true;
+  targets.genericLinux.gpu.nvidia = {
+    enable = true;
+    version = "590.48.01";
+    sha256 = "sha256-ueL4BpN4FDHMh/TNKRCeEz3Oy1ClDWto1LO/LWlr1ok=";
+};
 
   home.username = username;
   home.homeDirectory = homeDirectory;
@@ -37,20 +43,20 @@ in {
   };
 
   # Build a .desktop file for kitty that launches it with nixGL
-  xdg.dataFile."applications/kitty.desktop" = {
-    text = ''
-      [Desktop Entry]
-      Version=1.0
-      Type=Application
-      Name=kitty
-      GenericName=Terminal emulator
-      Comment=A fast, feature full, GPU based terminal emulator
-      TryExec=kitty
-      Exec=nixGL kitty
-      Icon=${homeDirectory}/.nix-profile/share/icons/hicolor/256x256/apps/kitty.png
-      Categories=System;TerminalEmulator;
-    '';
-  }; 
+  #xdg.dataFile."applications/kitty.desktop" = {
+  #  text = ''
+  #    [Desktop Entry]
+  #    Version=1.0
+  #    Type=Application
+  #    Name=kitty
+  #    GenericName=Terminal emulator
+  #    Comment=A fast, feature full, GPU based terminal emulator
+  #    TryExec=kitty
+  #    Exec=nixGL kitty
+  #    Icon=${homeDirectory}/.nix-profile/share/icons/hicolor/256x256/apps/kitty.png
+  #    Categories=System;TerminalEmulator;
+  #  '';
+  #}; 
 
   #xdg.dataFile."applications/Obsidian.desktop" = {
   #  text = ''
