@@ -2,8 +2,8 @@
    programs.kitty = {
     enable = true;
     keybindings = {
-      #"ctrl+shift+right" = "next_window";
-      #"ctrl+shift+left"  = "previous_window";
+      "ctrl+right"       = "next_window";
+      "ctrl+left"        = "previous_window";
       "ctrl+shift+]"     = "next_tab";
       "ctrl+shift+["     = "previous_tab";
       "ctrl+f4"          = "launch --location=split";
