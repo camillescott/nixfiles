@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, fetchFromGitHub, ... }:
 let
   # convenenience: installs a vim plugin from git with a given tag / branch
   plugin = {ref ? "HEAD", repo, postFixup ? ""}: pkgs.vimUtils.buildVimPlugin {
@@ -22,6 +22,16 @@ let
     postFixup = postFixup;
   };
 
+  ccls = pkgs.ccls.overrideAttrs {
+    # See https://github.com/nixos/nixpkgs/issues/449588
+    src = pkgs.fetchFromGitHub { 
+      owner = "MaskRay"; 
+      repo = "ccls"; 
+      rev = "5660367c771345b68c4ead4a4db2d4786985bf78"; 
+      sha256 = "sha256-R+5pL0orUdHtquqvJa4esNmc6ETbX8WK5oJlBCSG+uI="; 
+    }; 
+  };
+
 in {
 
   programs.neovim = {
@@ -35,7 +45,7 @@ in {
       (lib.strings.fileContents ./colors.vim)
     ];
     extraPackages = [
-      pkgs.ccls
+      ccls
       pkgs.fzf
     ];
     plugins = with pkgs.vimPlugins; [
@@ -43,15 +53,10 @@ in {
         plugin = coc-nvim;
         config = "let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-pyright', 'coc-yaml', 'coc-cmake', 'coc-r-lsp', 'coc-snippets', 'coc-tsserver']";
       }
-      #coc-cmake
       coc-fzf
       coc-highlight
-      #coc-json
-      #coc-pyright
-      #coc-yaml
       vim-devicons
-      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
-
+      nvim-treesitter.withAllGrammars
       (plugin {repo = "godlygeek/tabular";})
 
       # fuzzy finding, browsing
@@ -74,9 +79,6 @@ in {
       # color {repo = related
       (plugin {repo = "vim-scripts/CycleColor";})
       (plugin {repo = "flazz/vim-colorschemes";})
-      #(plugin {repo = "vim-scripts/PapayaWhip";})
-      #(plugin {repo = "zanglg/nova.vim";})
-      #(plugin {repo = "junegunn/goyo.vim";})
       (plugin {repo = "jnurmine/Zenburn";})
       (plugin {repo = "franbach/miramare";})
       (plugin {repo = "b4skyx/serenade";})
@@ -88,7 +90,6 @@ in {
        }
       )
 
-      #
       # documentation plugins
       # 
       # single-item tarballs are currently broken: https://github.com/NixOS/nix/issues/10983

@@ -120,11 +120,11 @@ augroup snakefile_ft
   autocmd BufNewFile,BufRead *.snakefile set syntax=snakemake|set tabstop=4|set shiftwidth=4|set expandtab|set
 augroup END
 
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-    -- ensure_installed = "all",
-    highlight = {
-        enable = true,
-    }
-}
-EOF
+"lua << EOF
+"require'nvim-treesitter.configs'.setup {
+"    -- ensure_installed = "all",
+"    highlight = {
+"        enable = true,
+"    }
+"}
+"EOF
