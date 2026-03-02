@@ -42,31 +42,4 @@ in {
     source = ../common/vscode/settings.json;
   };
 
-  # Build a .desktop file for kitty that launches it with nixGL
-  #xdg.dataFile."applications/kitty.desktop" = {
-  #  text = ''
-  #    [Desktop Entry]
-  #    Version=1.0
-  #    Type=Application
-  #    Name=kitty
-  #    GenericName=Terminal emulator
-  #    Comment=A fast, feature full, GPU based terminal emulator
-  #    TryExec=kitty
-  #    Exec=nixGL kitty
-  #    Icon=${homeDirectory}/.nix-profile/share/icons/hicolor/256x256/apps/kitty.png
-  #    Categories=System;TerminalEmulator;
-  #  '';
-  #}; 
-
-  #xdg.dataFile."applications/Obsidian.desktop" = {
-  #  text = ''
-  #    [Desktop Entry]
-  #    Version=1.0
-  #    Type=Application
-  #    Name=Obsidian
-  #    GenericName=Notetaking application
-  #    TryExec=obsidian
-  #    Exec=nixGLIntel obsidian
-  #  '';
-  #};
 }
