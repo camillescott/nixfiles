@@ -56,19 +56,20 @@
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
-    userName = "Camille Scott";
-    userEmail = "camille.scott.w@gmail.com";
-    aliases = {
-      graph = "log --oneline --abbrev-commit --all --graph --decorate --color";
-    };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Camille Scott";
+        email = "camille.scott.w@gmail.com";
+      };
+      alias = {
+        graph = "log --oneline --abbrev-commit --all --graph --decorate --color";
+      };
       pull = {
         rebase = false;
       };
       init = {
         defaultBranch = "main";
       };
-
       ssh = {
         variant = "ssh";
       };
